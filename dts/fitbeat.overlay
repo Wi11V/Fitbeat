@@ -1,0 +1,49 @@
+// Device Tree Overlay for Fitbeat on nrf52840
+
+/ {
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+	};
+};
+
+&i2c0 {
+	status = "okay";
+	
+	// BMI270 IMU
+	bmi270@68 {
+		compatible = "bosch,bmi270";
+		reg = <0x68>;
+		int-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
+		label = "BMI270";
+	};
+	
+	// Additional sensors on I2C if needed
+};
+
+&spi1 {
+	status = "okay";
+	
+	// High-G Accelerometer (if using SPI)
+	// cs-gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
+};
+
+&adc {
+	status = "okay";
+	
+	// ADC channels for capacitive sensor and other analog inputs
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&uart0 {
+	status = "okay";
+	current-speed = <115200>;
+};
+
+&gpiote {
+	status = "okay";
+};

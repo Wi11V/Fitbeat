@@ -1,0 +1,35 @@
+build/
+*.elf
+*.hex
+*.bin
+*.map
+*.o
+*.d
+*.elf.map
+*.a
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CMake
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+
+# Zephyr
+.west/
