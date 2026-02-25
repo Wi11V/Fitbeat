@@ -47,6 +47,16 @@ int main(void)
 	/* Sensor reading loop */
 	while (1) {
 		sensor_manager_read();
+		
+		/* Get current sensor data */
+		struct sensor_data *data = sensor_manager_get_data();
+		
+		/* Send notifications for each sensor type */
+		ble_notify_imu(data);
+		ble_notify_highg(data);
+		ble_notify_cap(data);
+		ble_notify_adc(data);
+		
 		k_sleep(K_MSEC(100)); // 10 Hz sampling rate
 	}
 
